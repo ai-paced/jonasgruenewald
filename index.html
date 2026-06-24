@@ -9,6 +9,13 @@
 <meta property="og:description" content="Eine Entwicklung, drei Marken: vom spielerischen Lernen zur strukturierten Organisationsentwicklung.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://jonasgruenewald.de">
+<meta property="og:image" content="https://jonasgruenewald.de/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="favicon-180.png">
 <link rel="preload" href="assets/fonts/fraunces-600.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
 <style>
@@ -128,12 +135,14 @@
   .stufe--3{margin-left:0;}
 
   .stufe .logo-feld{
-    display:flex;align-items:center;justify-content:center;
-    min-height:74px;
+    display:flex;align-items:center;justify-content:flex-start;
+    width:200px;min-height:70px;
   }
-  .stufe .logo-feld img{max-width:100%;max-height:64px;width:auto;height:auto;display:block;}
-  /* AI-Paced Logo ist quadratisch, etwas kleiner setzen */
-  .stufe--3 .logo-feld img{max-height:84px;}
+  /* Breite Logos (Digi-EP, Xperiential) werden über die Breite begrenzt,
+     damit sie im selben Rahmen sitzen wie das quadratische AI-Paced. */
+  .stufe .logo-feld img{max-width:100%;max-height:48px;width:auto;height:auto;display:block;}
+  /* AI-Paced ist quadratisch: leichter optischer Höhenbonus, sonst wirkt es zierlicher. */
+  .stufe--3 .logo-feld img{max-height:64px;}
 
   .stufe .text .rolle{
     font-size:.74rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
@@ -257,8 +266,8 @@
   <footer class="reveal">
     <span>© <span id="jahr"></span> Jonas Grünewald</span>
     <nav>
-      <a href="https://ai-paced.de/impressum" target="_blank" rel="noopener">Impressum</a>
-      <a href="https://ai-paced.de/datenschutz" target="_blank" rel="noopener">Datenschutz</a>
+      <a href="/impressum.html">Impressum</a>
+      <a href="/datenschutz.html">Datenschutz</a>
     </nav>
   </footer>
 

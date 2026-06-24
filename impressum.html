@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,follow">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<title>Impressum · Jonas Grünewald</title>
+<style>
+  @font-face{font-family:'Fraunces';src:url('assets/fonts/fraunces-600.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap;}
+  @font-face{font-family:'Inter';src:url('assets/fonts/inter-400.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap;}
+  @font-face{font-family:'Inter';src:url('assets/fonts/inter-600.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap;}
+  :root{
+    --gruen-dunkel:#06997a;
+    --tinte:#130044;
+    --tinte-70:rgba(19,0,68,.70);
+    --papier:#faf8f4;
+    --linie:rgba(19,0,68,.12);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Inter',system-ui,sans-serif;background:var(--papier);color:var(--tinte);line-height:1.65;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:680px;margin:0 auto;padding:clamp(2rem,5vw,4rem) clamp(1.25rem,4vw,2rem);}
+  .back{display:inline-block;margin-bottom:2rem;color:var(--gruen-dunkel);text-decoration:none;font-weight:600;font-size:.95rem;}
+  .back:hover{text-decoration:underline;}
+  h1{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(1.8rem,4vw,2.4rem);margin-bottom:1.8rem;}
+  h2{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:1.15rem;margin:1.8rem 0 .5rem;}
+  p{color:var(--tinte-70);margin-bottom:.6rem;}
+  a{color:var(--tinte);}
+  footer{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--linie);font-size:.88rem;color:var(--tinte-70);}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <a class="back" href="/">← Zurück zur Startseite</a>
+  <h1>Impressum</h1>
+
+  <h2>Angaben gemäß § 5 DDG</h2>
+  <p>Jonas Grünewald<br>Waldstraße 5<br>50226 Frechen<br>Deutschland</p>
+
+  <h2>Kontakt</h2>
+  <p>E-Mail: <a href="mailto:jg@ai-paced.de">jg@ai-paced.de</a></p>
+
+  <h2>Umsatzsteuer-ID</h2>
+  <p>Eine Umsatzsteuer-Identifikationsnummer wird derzeit nicht ausgewiesen.</p>
+
+  <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
+  <p>Jonas Grünewald, Anschrift wie oben.</p>
+
+  <h2>Haftung für Inhalte</h2>
+  <p>Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.</p>
+
+  <h2>Haftung für Links</h2>
+  <p>Diese Website verweist über Links auf die externen Auftritte der Marken Digi-EP, Xperiential und AI-Paced sowie gegebenenfalls weiterer Dritter. Auf deren Inhalte haben wir keinen Einfluss. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber verantwortlich.</p>
+
+  <h2>Urheberrecht</h2>
+  <p>Die durch den Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.</p>
+
+  <footer>© <span id="jahr"></span> Jonas Grünewald</footer>
+</main>
+<script>document.getElementById('jahr').textContent=new Date().getFullYear();</script>
+</body>
+</html>
