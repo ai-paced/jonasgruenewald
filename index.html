@@ -75,8 +75,8 @@
     font-size:clamp(1.05rem,2.2vw,1.25rem);color:var(--tinte-70);max-width:34em;
   }
   .btn-kontakt{
-    display:inline-flex;align-items:center;gap:.5rem;align-self:flex-start;
-    margin-top:1.6rem;padding:.7rem 1.4rem;border-radius:999px;
+    display:inline-flex;align-items:center;gap:.5rem;
+    padding:.7rem 1.4rem;border-radius:999px;
     background:var(--gruen-dunkel);color:#fff;text-decoration:none;
     font-weight:600;font-size:1rem;
     transition:transform .2s ease,box-shadow .2s ease,background .2s ease;
@@ -86,6 +86,17 @@
   .btn-kontakt:hover{background:#057a62;transform:translateY(-2px);box-shadow:0 10px 24px -8px rgba(6,153,122,.7);}
   .btn-kontakt:hover .pfeil{transform:translateX(3px);}
   .btn-kontakt:focus-visible{outline:3px solid var(--gruen);outline-offset:3px;}
+  .hero-aktionen{
+    display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+    margin-top:1.6rem;
+  }
+  .hero-linkedin{
+    display:inline-flex;align-items:center;gap:.4rem;
+    color:#0A66C2;font-weight:600;font-size:1rem;text-decoration:none;
+  }
+  .hero-linkedin svg{width:20px;height:20px;fill:currentColor;flex-shrink:0;}
+  .hero-linkedin:hover{color:#004182;}
+  .hero-linkedin:focus-visible{outline:3px solid #0A66C2;outline-offset:3px;border-radius:6px;}
 
   /* ---------- GENESE ---------- */
   .genese{
@@ -127,7 +138,7 @@
     align-items:center;
     background:#fff;border:1px solid var(--linie);border-radius:16px;
     padding:clamp(1.3rem,2.5vw,1.8rem) clamp(1.4rem,3vw,2rem);
-    text-decoration:none;color:inherit;
+    color:inherit;
     transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;
     box-shadow:0 1px 0 rgba(19,0,68,.03);
   }
@@ -139,7 +150,9 @@
   }
   .stufe--3::before{border-color:var(--orange);}
   .stufe:hover{transform:translateY(-3px);box-shadow:0 16px 40px -20px rgba(19,0,68,.30);border-color:rgba(9,193,155,.5);}
-  .stufe:focus-visible{outline:3px solid var(--gruen);outline-offset:3px;}
+  /* Logo als eigener Link */
+  .stufe .logo-link{display:flex;align-items:center;justify-content:center;text-decoration:none;}
+  .stufe .logo-link:focus-visible{outline:3px solid var(--gruen);outline-offset:3px;border-radius:8px;}
 
   /* alle Stufen linksbündig, gleichwertig */
   .stufe--1{margin-left:0;}
@@ -164,12 +177,19 @@
   }
   .stufe--3 .text .rolle{color:var(--orange);}
   .stufe .text p{color:var(--tinte-70);font-size:1rem;margin-bottom:.7rem;}
-  .stufe .text .geh{
-    display:inline-flex;align-items:center;gap:.4rem;
-    font-weight:600;font-size:.95rem;color:var(--tinte);
+  /* Zeile mit Website-Link links und Mail-Adresse rechts */
+  .stufe .kontaktzeile{
+    display:flex;align-items:baseline;justify-content:space-between;gap:1rem;flex-wrap:wrap;
   }
-  .stufe .text .geh .pfeil{transition:transform .25s ease;}
-  .stufe:hover .text .geh .pfeil{transform:translateX(4px);}
+  .stufe .geh{
+    display:inline-flex;align-items:center;gap:.4rem;
+    font-weight:600;font-size:.95rem;color:var(--tinte);text-decoration:none;
+  }
+  .stufe .geh:hover{color:var(--gruen-dunkel);}
+  .stufe .geh:focus-visible{outline:3px solid var(--gruen);outline-offset:3px;border-radius:6px;}
+  .stufe .geh .pfeil{transition:transform .25s ease;}
+  .stufe .geh:hover .pfeil{transform:translateX(4px);}
+  .stufe .mail{color:var(--tinte-55);font-size:.9rem;user-select:all;}
 
   .stufe--3{border-color:rgba(255,138,61,.35);}
   .stufe--3:hover{border-color:rgba(255,138,61,.7);}
@@ -194,7 +214,7 @@
   .reveal.in{opacity:1;transform:none;}
   @media (prefers-reduced-motion:reduce){
     .reveal{opacity:1;transform:none;transition:none;}
-    .stufe,.stufe .text .geh .pfeil{transition:none;}
+    .stufe,.stufe .geh .pfeil{transition:none;}
     html{scroll-behavior:auto;}
   }
 
@@ -203,6 +223,7 @@
     .hero{grid-template-columns:1fr;text-align:left;}
     .portrait{max-width:230px;}
     .stufe{grid-template-columns:1fr;gap:1rem;}
+    .stufe .logo-link{justify-content:flex-start;}
     .stufe .logo-feld{justify-content:flex-start;min-height:0;width:auto;}
     .stufe .logo-feld img{max-height:60px;}
     .stufe--2 .logo-feld img{max-height:74px;}
@@ -211,6 +232,10 @@
     .pfad{padding-left:0;}
     .pfad::before{display:none;}
     .stufe::before{display:none;}
+    /* Mail linksbündig unter den Website-Link */
+    .stufe .kontaktzeile{flex-direction:column;align-items:flex-start;gap:.35rem;}
+    /* Im Hero nur das LinkedIn-Icon, kein Text */
+    .hero-linkedin .li-text{display:none;}
     footer{flex-direction:column;align-items:flex-start;}
   }
 </style>
@@ -227,7 +252,13 @@
       <p class="eyebrow">Jonas Grünewald</p>
       <h1>Ich helfe Menschen und Organisationen, <span class="akzent">sich weiterzuentwickeln.</span></h1>
       <p class="claim">Eine Entwicklung, drei Marken. Vom spielerischen Lernen mit Kindern bis zur strukturierten Organisationsentwicklung im KI-Wandel.</p>
-      <a class="btn-kontakt" href="https://ai-paced.de/jg-kontakt" target="_blank" rel="noopener">Kontakt aufnehmen <span class="pfeil">→</span></a>
+      <div class="hero-aktionen">
+        <a class="btn-kontakt" href="https://ai-paced.de/jg-kontakt" target="_blank" rel="noopener">Kontakt aufnehmen <span class="pfeil">→</span></a>
+        <a class="hero-linkedin" href="https://www.linkedin.com/in/jonas-gruenewald/" target="_blank" rel="noopener" aria-label="LinkedIn-Profil von Jonas Grünewald">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.8 0 0 .78 0 1.73v20.53C0 23.22.8 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.74V1.73C24 .78 23.2 0 22.22 0z"/></svg>
+          <span class="li-text">LinkedIn</span>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -240,34 +271,49 @@
     <div class="pfad">
 
       <!-- AI-Paced: oben, aktuell -->
-      <a class="stufe stufe--3 reveal" href="https://ai-paced.de" target="_blank" rel="noopener">
-        <div class="logo-feld"><img src="assets/logos/ai-paced.svg" alt="AI-Paced"></div>
+      <div class="stufe stufe--3 reveal">
+        <a class="logo-link" href="https://ai-paced.de" target="_blank" rel="noopener" aria-label="Zur Website von AI-Paced">
+          <span class="logo-feld"><img src="assets/logos/ai-paced.svg" alt="AI-Paced"></span>
+        </a>
         <div class="text">
           <p class="rolle">Organisationen im KI-Wandel</p>
           <p>Strukturierte Organisationsentwicklung mit Bremsfaktoren-Analyse, Toolbox und Begleitung. Für den Mittelstand, der im Takt der KI handlungsfähig bleiben will.</p>
-          <span class="geh">ai-paced.de <span class="pfeil">→</span></span>
+          <div class="kontaktzeile">
+            <a class="geh" href="https://ai-paced.de" target="_blank" rel="noopener">ai-paced.de <span class="pfeil">→</span></a>
+            <span class="mail">jg@ai-paced.de</span>
+          </div>
         </div>
-      </a>
+      </div>
 
       <!-- Xperiential: Mitte -->
-      <a class="stufe stufe--2 reveal" href="https://xperiential.de" target="_blank" rel="noopener">
-        <div class="logo-feld"><img src="assets/logos/xperiential.svg" alt="Xperiential"></div>
+      <div class="stufe stufe--2 reveal">
+        <a class="logo-link" href="https://xperiential.de" target="_blank" rel="noopener" aria-label="Zur Website von Xperiential">
+          <span class="logo-feld"><img src="assets/logos/xperiential.svg" alt="Xperiential"></span>
+        </a>
         <div class="text">
           <p class="rolle">KMU und Startups</p>
           <p>Erfahrungsbasiertes Lernen für Teams: Trainings, Kulturworkshops, Coachings und Teamevents.</p>
-          <span class="geh">xperiential.de <span class="pfeil">→</span></span>
+          <div class="kontaktzeile">
+            <a class="geh" href="https://xperiential.de" target="_blank" rel="noopener">xperiential.de <span class="pfeil">→</span></a>
+            <span class="mail">jonas.gruenewald@xperiential.de</span>
+          </div>
         </div>
-      </a>
+      </div>
 
       <!-- Digi-EP: unten, Fundament -->
-      <a class="stufe stufe--1 reveal" href="https://digiep.com" target="_blank" rel="noopener">
-        <div class="logo-feld"><img src="assets/logos/digi-ep.svg" alt="Digi-EP"></div>
+      <div class="stufe stufe--1 reveal">
+        <a class="logo-link" href="https://digiep.com" target="_blank" rel="noopener" aria-label="Zur Website von Digi-EP">
+          <span class="logo-feld"><img src="assets/logos/digi-ep.svg" alt="Digi-EP"></span>
+        </a>
         <div class="text">
           <p class="rolle">Bildung</p>
           <p>Digitale und analoge Erlebnispädagogik für Schulen, Kommunen und gemeinnützige Organisationen: Lehrkräfte und andere Betreuungspersonen ausbilden, Kinder und Jugendliche fördern.</p>
-          <span class="geh">digiep.com <span class="pfeil">→</span></span>
+          <div class="kontaktzeile">
+            <a class="geh" href="https://digiep.com" target="_blank" rel="noopener">digiep.com <span class="pfeil">→</span></a>
+            <span class="mail">jonas.gruenewald@digiep.de</span>
+          </div>
         </div>
-      </a>
+      </div>
 
     </div>
   </section>
